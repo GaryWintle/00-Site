@@ -4,189 +4,294 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rebel Leaf</title>
-    <style>
-      .back-to-top {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: #333;
-        color: white;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: opacity 0.3s, transform 0.3s;
-        opacity: 0;
-        transform: translateY(100px);
-        border: none;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      }
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <style>
+        /* Reset with overflow control */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
 
-      .back-to-top.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
+        html,
+        body {
+          overflow-x: hidden; /* Prevent horizontal scroll */
+          position: relative; /* Create new stacking context */
+          width: 100%;
+        }
 
-      .back-to-top:hover {
-        background: #555;
-      }
+        /* Base button styles */
+        .back-to-top {
+          position: fixed;
+          cursor: pointer;
+          transition: all 0.3s;
+          opacity: 0;
+          transform: translateY(100px);
+          border: none;
+          z-index: 1000;
+          pointer-events: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+          /* Ensure button stays within viewport */
+          right: max(20px, env(safe-area-inset-right, 20px));
+          background: #ffffff;
+          color: #333333;
+        }
 
-      /* Arrow icon */
-      .back-to-top::before {
-        content: "↑";
-        font-size: 20px;
-      }
+        .back-to-top.visible {
+          opacity: 1;
+          transform: translateY(0);
+          pointer-events: auto;
+        }
 
-      /* Hidden observer element */
-      .scroll-observer {
-        height: 1px;
-        width: 100%;
-        position: absolute;
-        top: 300px; /* Adjust this value to change when button appears */
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Observer element -->
-    <div class="scroll-observer"></div>
+        @media (prefers-color-scheme: dark) {
+          .back-to-top {
+            background: #333333;
+            color: #ffffff;
+          }
+        }
 
-    <!-- Back to top button -->
-    <button class="back-to-top" aria-label="Back to top"></button>
+        /* Desktop styles */
+        @media (min-width: 768px) {
+          .back-to-top {
+            bottom: 40px;
+            width: 50px;
+            height: 50px;
+            /* Adjust right position for larger screens */
+            right: max(40px, env(safe-area-inset-right, 40px));
+          }
 
-    <script>
-      const backToTop = document.querySelector(".back-to-top");
-      const scrollObserver = document.querySelector(".scroll-observer");
-      let lastScrollY = window.scrollY;
-      let isVisible = false;
+          .back-to-top::before {
+            content: "↑";
+            font-size: 24px;
+          }
 
-      // Create intersection observer to check when we pass threshold
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          // Only proceed if we're past threshold and scrolling up
-          if (entry.isIntersecting) {
-            handleScroll(); // Initial check
+          .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          }
+
+          .back-to-top.visible:hover {
+            transform: translateY(-5px);
+          }
+        }
+
+        /* Mobile styles */
+        @media (max-width: 767px) {
+          .back-to-top {
+            bottom: max(20px, env(safe-area-inset-bottom, 20px));
+            width: 40px;
+            height: 40px;
+          }
+
+          .back-to-top::before {
+            content: "↑";
+            font-size: 20px;
+          }
+
+          .back-to-top:active {
+            transform: scale(0.95);
+          }
+        }
+
+        @media print {
+          .back-to-top {
+            display: none;
+          }
+        }
+
+        /* Observer element - adjusted to prevent overflow */
+        .scroll-observer {
+          height: 1px;
+          width: 100%;
+          position: absolute;
+          top: min(300px, 30vh);
+          pointer-events: none;
+          left: 0; /* Ensure proper alignment */
+        }
+
+        /* Optional: Add some content padding to prevent button overlap */
+        .content {
+          padding-bottom: max(80px, env(safe-area-inset-bottom, 80px));
+        }
+      </style>
+    </head>
+    <body>
+      <!-- Observer element -->
+      <div class="scroll-observer"></div>
+
+      <!-- Back to top button -->
+      <button class="back-to-top" aria-label="Back to top"></button>
+      <script>
+        const backToTop = document.querySelector(".back-to-top");
+        const scrollObserver = document.querySelector(".scroll-observer");
+        let lastScrollY = window.scrollY;
+        let lastScrollTime = Date.now();
+        let isVisible = false;
+        let ticking = false;
+
+        const observerOptions = {
+          threshold: 0,
+          rootMargin: "0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              handleScroll();
+            } else {
+              hideButton();
+            }
+          });
+        }, observerOptions);
+
+        observer.observe(scrollObserver);
+
+        function handleScroll() {
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              const currentScrollY = window.scrollY;
+              const currentTime = Date.now();
+
+              if (currentTime - lastScrollTime > 100) {
+                if (currentScrollY < lastScrollY && currentScrollY > 300) {
+                  showButton();
+                } else {
+                  hideButton();
+                }
+
+                lastScrollTime = currentTime;
+                lastScrollY = currentScrollY;
+              }
+
+              ticking = false;
+            });
+
+            ticking = true;
+          }
+        }
+
+        function showButton() {
+          if (!isVisible) {
+            backToTop.classList.add("visible");
+            isVisible = true;
+          }
+        }
+
+        function hideButton() {
+          if (isVisible) {
+            backToTop.classList.remove("visible");
+            isVisible = false;
+          }
+        }
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        backToTop.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          if ("scrollBehavior" in document.documentElement.style) {
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
           } else {
-            hideButton();
+            window.scrollTo(0, 0);
           }
         });
-      });
 
-      // Start observing
-      observer.observe(scrollObserver);
-
-      // Handle scroll events
-      function handleScroll() {
-        const currentScrollY = window.scrollY;
-
-        // Show button only when scrolling up and past threshold
-        if (currentScrollY < lastScrollY && currentScrollY > 300) {
-          showButton();
-        } else {
-          hideButton();
-        }
-
-        lastScrollY = currentScrollY;
-      }
-
-      function showButton() {
-        if (!isVisible) {
-          backToTop.classList.add("visible");
-          isVisible = true;
-        }
-      }
-
-      function hideButton() {
-        if (isVisible) {
-          backToTop.classList.remove("visible");
-          isVisible = false;
-        }
-      }
-
-      // Add scroll event listener
-      window.addEventListener("scroll", handleScroll);
-
-      // Scroll to top when button is clicked
-      backToTop.addEventListener("click", () => {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
+        document.addEventListener("DOMContentLoaded", () => {
+          if (window.scrollY > 300) {
+            handleScroll();
+          }
         });
-      });
-    </script>
-    <img src="rebelleaf-logo.png" alt="" />
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-    <h1>Welcome to Rebel Leaf! Word up!</h1>
-  </body>
+
+        let resizeTimeout;
+        window.addEventListener(
+          "resize",
+          () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(handleScroll, 100);
+          },
+          { passive: true }
+        );
+      </script>
+      <img src="rebelleaf-logo.png" alt="" />
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+      <h1>Welcome to Rebel Leaf! Word up!</h1>
+    </body>
+  </head>
 </html>
