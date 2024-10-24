@@ -4,9 +4,189 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rebel Leaf</title>
+    <style>
+      .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #333;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: opacity 0.3s, transform 0.3s;
+        opacity: 0;
+        transform: translateY(100px);
+        border: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .back-to-top:hover {
+        background: #555;
+      }
+
+      /* Arrow icon */
+      .back-to-top::before {
+        content: "↑";
+        font-size: 20px;
+      }
+
+      /* Hidden observer element */
+      .scroll-observer {
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        top: 300px; /* Adjust this value to change when button appears */
+      }
+    </style>
   </head>
   <body>
+    <!-- Observer element -->
+    <div class="scroll-observer"></div>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" aria-label="Back to top"></button>
+
+    <script>
+      const backToTop = document.querySelector(".back-to-top");
+      const scrollObserver = document.querySelector(".scroll-observer");
+      let lastScrollY = window.scrollY;
+      let isVisible = false;
+
+      // Create intersection observer to check when we pass threshold
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          // Only proceed if we're past threshold and scrolling up
+          if (entry.isIntersecting) {
+            handleScroll(); // Initial check
+          } else {
+            hideButton();
+          }
+        });
+      });
+
+      // Start observing
+      observer.observe(scrollObserver);
+
+      // Handle scroll events
+      function handleScroll() {
+        const currentScrollY = window.scrollY;
+
+        // Show button only when scrolling up and past threshold
+        if (currentScrollY < lastScrollY && currentScrollY > 300) {
+          showButton();
+        } else {
+          hideButton();
+        }
+
+        lastScrollY = currentScrollY;
+      }
+
+      function showButton() {
+        if (!isVisible) {
+          backToTop.classList.add("visible");
+          isVisible = true;
+        }
+      }
+
+      function hideButton() {
+        if (isVisible) {
+          backToTop.classList.remove("visible");
+          isVisible = false;
+        }
+      }
+
+      // Add scroll event listener
+      window.addEventListener("scroll", handleScroll);
+
+      // Scroll to top when button is clicked
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    </script>
     <img src="rebelleaf-logo.png" alt="" />
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
+    <h1>Welcome to Rebel Leaf! Word up!</h1>
     <h1>Welcome to Rebel Leaf! Word up!</h1>
   </body>
 </html>
