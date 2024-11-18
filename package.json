@@ -1,14 +1,15 @@
 {
-  "name": "rebelleafsite",
-  "private": true,
-  "version": "0.0.0",
+  "name": "rebel-leaf",
   "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "devDependencies": {
-    "vite": "^5.4.10"
+  "dependencies": {
+    "astro": "^4.16.13"
   }
 }
