@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "rollup": "^4.27.3",
     "vite": "^5.4.10",
     "vite-imagetools": "^7.0.4"
   },
