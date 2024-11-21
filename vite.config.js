@@ -2,15 +2,17 @@ import { defineConfig } from "vite";
 import { imagetools } from "vite-imagetools";
 
 export default defineConfig({
+  // Local development server configuration
   server: {
     port: 3000,
   },
+
   // Ensures .riv files are treated as assets
   assetsInclude: ["**/*.riv"],
 
   // JSON handling (default is fine unless you need stringify behavior)
   json: {
-    stringify: false, // Change to true if JSON files should be loaded as strings
+    stringify: false, // Set to true if JSON files should load as strings
   },
 
   // Optional: Resolve aliases for cleaner imports
@@ -20,11 +22,28 @@ export default defineConfig({
     },
   },
 
-  // Plugins can be added here
+  // Plugins
   plugins: [
     imagetools({
-      // Automatically process all images
+      // Automatically process all images with specific parameters
       defaultDirectives: () => new URLSearchParams("format=webp"),
     }),
   ],
+
+  // Build configuration
+  build: {
+    target: "esnext", // Modern JavaScript for optimal performance
+    outDir: "dist", // Output directory for the build
+    rollupOptions: {
+      output: {
+        assetFileNames: ({ name }) => {
+          // Keep file names clean
+          return name.endsWith(".webp")
+            ? "assets/[name]-[hash][extname]"
+            : "assets/[name][extname]";
+        },
+      },
+      external: [], // Keep empty unless you have external dependencies
+    },
+  },
 });
