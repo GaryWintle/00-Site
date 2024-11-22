@@ -14,4 +14,38 @@
   --color-gray-700: #b0a6ad;
   --color-gray-800: #6b6168;
   --color-black: #201a2b;
+
+  /* Typography */
+  --font-primary: "Inter", sans-serif;
+  --font-heading: "Bricolage Grotesque", sans-serif;
+  --font-size-sm: 1.2rem;
+  --font-size-base: 1.6rem;
+  --font-size-lg: 2.4rem;
+  --font-size-xl: 4.8rem;
+  --font-size-2xl: 21rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
+  /* Spacing */
+  --spacing-1: 0.4rem;
+  --spacing-2: 0.8rem;
+  --spacing-3: 1.2rem;
+  --spacing-4: 1.6rem;
+  --spacing-5: 2.4rem;
+  --spacing-6: 3.2rem;
+  --spacing-7: 6.4rem;
+  --spacing-8: 9.6rem;
+  --spacing-9: 12.8rem;
+  --spacing-10: 19.2rem;
+  --spacing-11: 25.6rem;
+  --spacing-12: 38.4rem;
+  --spacing-13: 51.2rem;
+
+  /* Layout */
+  --container-max-width: 1200px;
+  --border-radius: 1.6rem;
+  --border-radius-btn: 1.2rem;
 }

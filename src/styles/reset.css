@@ -15,6 +15,7 @@ body {
   line-height: 1.5;
   /* 4. Improve text rendering */
   -webkit-font-smoothing: antialiased;
+  font-size: 1.6rem;
 }
 
 /* 5. Improve media defaults */
@@ -65,4 +66,10 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  overflow-x: clip;
 }
