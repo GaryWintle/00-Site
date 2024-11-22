@@ -1,0 +1,17 @@
+:root {
+  /* Colors */
+  --color-teal-light: #67ecbc;
+  --color-teal-dark: #42cd90;
+  --color-purple-light: #b69ad5;
+  --color-purple-mid: #8a5fb1;
+  --color-purple-dark: #583778;
+  --color-purple-darkest: #3d3253;
+
+  /* Tones */
+  --color-white: #fdfdfd;
+  --color-gray-300: #eeeeed;
+  --color-gray-500: #dfdbde;
+  --color-gray-700: #b0a6ad;
+  --color-gray-800: #6b6168;
+  --color-black: #201a2b;
+}

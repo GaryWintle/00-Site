@@ -27,6 +27,7 @@ export default defineConfig({
     imagetools({
       // Automatically process all images with specific parameters
       defaultDirectives: () => new URLSearchParams("format=webp"),
+      include: "**/*.{png,jpg}",
     }),
   ],
 
@@ -39,8 +40,8 @@ export default defineConfig({
         assetFileNames: ({ name }) => {
           // Keep file names clean
           return name.endsWith(".webp")
-            ? "assets/[name]-[hash][extname]"
-            : "assets/[name][extname]";
+            ? "images/[name]-[hash][extname]"
+            : "images/[name][extname]";
         },
       },
       external: [], // Keep empty unless you have external dependencies
