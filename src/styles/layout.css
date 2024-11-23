@@ -1,0 +1,14 @@
+.header {
+  background-color: blueviolet;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 120rem;
+  height: var(--spacing-7);
+  margin: 0 auto;
+  padding: 0 var(--spacing-6);
+  background-color: red;
+}

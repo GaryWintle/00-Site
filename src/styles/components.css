@@ -1,0 +1,8 @@
+#rebelleaf-logo {
+  width: 29rem;
+}
+
+.nav__links {
+  display: flex;
+  gap: var(--spacing-5);
+}
