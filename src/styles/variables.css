@@ -15,6 +15,19 @@
   --color-gray-800: #6b6168;
   --color-black: #201a2b;
 
+  /* Gradients */
+
+  --dark-banner-gradient: linear-gradient(
+    0deg,
+    var(--color-purple-darkest) 0%,
+    var(--color-black) 110%
+  );
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
   /* Typography */
   --font-primary: "Inter", sans-serif;
   --font-heading: "Bricolage Grotesque", sans-serif;
@@ -23,11 +36,6 @@
   --font-size-lg: 2.4rem;
   --font-size-xl: 4.8rem;
   --font-size-2xl: 21rem;
-
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 
   /* Spacing */
   --spacing-1: 0.4rem;

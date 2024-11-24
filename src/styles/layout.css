@@ -1,5 +1,12 @@
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
 .header {
-  background-color: blueviolet;
+  background: var(--dark-banner-gradient);
+  border-style: none none solid none;
+  border-width: 5px;
+  border-color: var(--color-);
 }
 
 .header__nav {
@@ -7,8 +14,12 @@
   align-items: center;
   justify-content: space-between;
   max-width: 120rem;
-  height: var(--spacing-7);
+  height: 7.5rem;
   margin: 0 auto;
   padding: 0 var(--spacing-6);
-  background-color: red;
+  background: var(--dark-banner-gradient);
+}
+
+.nav__links {
+  align-items: baseline;
 }
