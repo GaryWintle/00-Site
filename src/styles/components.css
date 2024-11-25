@@ -16,3 +16,8 @@
   border: 2px solid var(--color-black);
   box-shadow: 2px 2px var(--color-purple-mid);
 }
+
+.cta {
+  font-size: var(--font-size-lg);
+  padding: var(--spacing-3) var(--spacing-5);
+}

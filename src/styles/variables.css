@@ -19,8 +19,8 @@
 
   --dark-banner-gradient: linear-gradient(
     0deg,
-    var(--color-purple-darkest) 0%,
-    var(--color-black) 110%
+    var(--color-purple-dark) -80%,
+    var(--color-black) 40%
   );
 
   /* Shadows */
@@ -51,6 +51,7 @@
   --spacing-11: 25.6rem;
   --spacing-12: 38.4rem;
   --spacing-13: 51.2rem;
+  --desktop-width: 120rem;
 
   /* Layout */
   --container-max-width: 1200px;
