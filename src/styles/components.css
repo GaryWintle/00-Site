@@ -19,5 +19,10 @@
 
 .cta {
   font-size: var(--font-size-lg);
+  letter-spacing: -0.05rem;
   padding: var(--spacing-3) var(--spacing-5);
+}
+
+.booking-icon {
+  width: 3rem;
 }

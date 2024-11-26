@@ -21,23 +21,33 @@ a {
 h1 {
   color: var(--color-white);
   font-size: var(--font-size-header);
-  line-height: 82%;
+  line-height: 85%;
   text-transform: uppercase;
   font-optical-sizing: auto;
   font-variation-settings: "wght" 800, "wdth" 78, "opsz" 96;
   letter-spacing: -0.2rem;
   text-align: center;
-  text-shadow: 3px 3px 0px var(--color-black), 6px 6px var(--color-purple-dark);
+  text-shadow: 4px 4px 0 var(--color-black), 6px 6px 0 var(--color-purple-mid),
+    0 21px 21px #201a2bbe;
   /* padding: var(--spacing-7) 0; */
+}
+
+.--green-text {
+  color: var(--color-teal-light);
 }
 
 .sub-hero-text {
   color: var(--color-white);
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-lg);
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.5;
   font-weight: 500;
-  max-width: 112rem;
+  max-width: 80rem;
   letter-spacing: -0.1rem;
-  text-shadow: var(--text-shadow-md);
+  text-shadow: 0 12px 21px #201a2bbe;
+}
+
+.bookings-text {
+  color: var(--color-white);
+  font-size: var(--font-size-base);
 }
