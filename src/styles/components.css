@@ -1,5 +1,6 @@
 #rebelleaf-logo {
   width: 28rem;
+  filter: drop-shadow(2px 2px 2px hsla(270, 20%, 2%, 0.26));
 }
 
 .nav__links {
@@ -25,4 +26,11 @@
 
 .booking-icon {
   width: 3rem;
+}
+
+.beaver-basic {
+  width: 28rem;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
 }

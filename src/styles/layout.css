@@ -24,6 +24,7 @@ body {
 .nav-container {
   background: var(--dark-banner-gradient);
   position: relative;
+  box-shadow: var(--shadow-lg);
 }
 
 .nav-container::after {
@@ -59,6 +60,7 @@ body {
   flex-direction: column;
   gap: var(--spacing-7);
   padding: var(--spacing-9) 0;
+  position: relative;
 }
 
 .hero-image {
@@ -77,7 +79,11 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--color-black);
+    background: var(--color-black);
+    background: linear-gradient(
+      var(--color-black) 80%,
+      var(--color-purple-dark) 110%
+    );
     opacity: 0.8;
     z-index: -1;
   }

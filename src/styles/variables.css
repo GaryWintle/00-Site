@@ -1,11 +1,11 @@
 :root {
   /* Colors */
-  --color-teal-light: #67ecbc;
-  --color-teal-dark: #42cd90;
-  --color-purple-light: #b69ad5;
-  --color-purple-mid: #8a5fb1;
-  --color-purple-dark: #583778;
-  --color-purple-darkest: #3d3253;
+  --color-teal-light: hsl(158, 78%, 66%);
+  --color-teal-dark: hsl(154, 58%, 53%);
+  --color-purple-light: hsl(268, 41%, 72%);
+  --color-purple-mid: hsl(271, 34%, 53%);
+  --color-purple-dark: hsl(270, 37%, 34%);
+  --color-purple-darkest: hsl(260, 25%, 26%);
 
   /* Tones */
   --color-white: #fdfdfd;
@@ -29,7 +29,7 @@
   );
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm: ;
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
   --text-shadow-md: 0 0 8.4px var(--color-black);
