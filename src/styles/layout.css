@@ -11,6 +11,9 @@ body {
 /* GLOBAL */
 .nav,
 .hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   max-width: var(--desktop-width);
   margin: 0 auto;
   padding: 0 var(--spacing-6);
@@ -42,9 +45,6 @@ body {
 }
 
 .nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   height: 8rem;
   background: var(--dark-banner-gradient);
 }
@@ -55,7 +55,10 @@ body {
 
 /* HERO */
 
-.hero-container {
+.hero {
+  flex-direction: column;
+  gap: var(--spacing-7);
+  padding: var(--spacing-9) 0;
 }
 
 .hero-image {
@@ -78,4 +81,13 @@ body {
     opacity: 0.8;
     z-index: -1;
   }
+}
+
+.hero__bookings {
+  display: flex;
+}
+
+.bookings-text {
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
 }
