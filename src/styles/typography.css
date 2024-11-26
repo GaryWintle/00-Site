@@ -50,4 +50,6 @@ h1 {
 .bookings-text {
   color: var(--color-white);
   font-size: var(--font-size-base);
+  font-weight: 500;
+  font-style: italic;
 }

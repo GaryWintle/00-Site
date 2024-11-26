@@ -1,4 +1,7 @@
-// CSS Imports (looks good)
+//JS Imports
+import { updateBookingsMonth } from "@/js/utils/dateHelpers.js";
+
+// CSS Imports
 import "@/styles/components.css";
 import "@/styles/layout.css";
 import "@/styles/reset.css";
@@ -28,4 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Hero Bottom
   const heroBottom = document.querySelector(".hero-bottom");
   if (heroBottom) heroBottom.src = herobottom;
+
+  //Booking Date
+  updateBookingsMonth();
 });

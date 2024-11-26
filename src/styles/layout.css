@@ -56,6 +56,18 @@ body {
 
 /* HERO */
 
+.hero-container {
+  position: relative;
+}
+
+.hero-bottom {
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+  width: 100%;
+  height: auto;
+}
+
 .hero {
   flex-direction: column;
   gap: var(--spacing-7);
@@ -64,7 +76,7 @@ body {
 }
 
 .hero-image {
-  height: 100rem;
+  height: 105rem;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -81,10 +93,10 @@ body {
     bottom: 0;
     background: var(--color-black);
     background: linear-gradient(
-      var(--color-black) 80%,
+      var(--color-black) 75%,
       var(--color-purple-dark) 110%
     );
-    opacity: 0.8;
+    opacity: 0.85;
     z-index: -1;
   }
 }
