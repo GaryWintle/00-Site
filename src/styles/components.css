@@ -15,7 +15,8 @@
   padding: var(--spacing-2) var(--spacing-3);
   border-radius: var(--border-radius-btn);
   border: 2px solid var(--color-black);
-  box-shadow: 2px 2px var(--color-purple-mid);
+  box-shadow: 2px 2px var(--color-purple-mid),
+    inset 2px 2px 0 rgba(255, 255, 255, 0.15);
 }
 
 .cta {

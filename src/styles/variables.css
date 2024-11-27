@@ -35,7 +35,7 @@
   --text-shadow-md: 0 0 8.4px var(--color-black);
 
   /* Typography */
-  --font-primary: "Inter", sans-serif;
+  --font-primary: "Inter", Arial, sans-serif;
   --font-heading: "Bricolage Grotesque", sans-serif;
   --font-size-sm: 1.2rem;
   --font-size-base: 1.6rem;
