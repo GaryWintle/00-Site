@@ -105,3 +105,15 @@ body {
   display: flex;
   align-items: center;
 }
+
+/* Sub-hero */
+
+.sub-hero-container {
+  margin: var(--spacing-8) 0;
+}
+
+.sub-hero {
+  max-width: var(--desktop-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-6);
+}

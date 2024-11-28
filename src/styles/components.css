@@ -1,5 +1,8 @@
+/* Navigation */
+
 #rebelleaf-logo {
   width: 28rem;
+  height: auto;
   filter: drop-shadow(2px 2px 2px hsla(270, 20%, 2%, 0.26));
 }
 
@@ -12,15 +15,22 @@
   background-color: var(--color-teal-light);
   color: var(--color-black);
   font-weight: 700;
-  padding: var(--spacing-2) var(--spacing-3);
   border-radius: var(--border-radius-btn);
   border: 2px solid var(--color-black);
   box-shadow: 2px 2px var(--color-purple-mid),
     inset 2px 2px 0 rgba(255, 255, 255, 0.15);
+  cursor: pointer;
 }
 
-.cta {
+.nav__cta {
+  padding: var(--spacing-2) var(--spacing-3);
+}
+
+/* Hero */
+
+.hero__cta {
   font-size: var(--font-size-lg);
+  font-weight: 700;
   letter-spacing: -0.05rem;
   padding: var(--spacing-3) var(--spacing-5);
 }
@@ -34,4 +44,19 @@
   position: absolute;
   bottom: 0;
   right: 12px;
+}
+
+.image-collage {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  padding: 1rem;
+}
+
+.collage-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-purple-dark);
 }

@@ -1,5 +1,6 @@
 //JS Imports
 import { updateBookingsMonth } from "@/js/utils/dateHelpers.js";
+import { initDynamicImageCollage } from "@/js/components/imageCollage.js";
 
 // CSS Imports
 import "@/styles/components.css";
@@ -34,4 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //Booking Date
   updateBookingsMonth();
+
+  // Image Collage
+  initDynamicImageCollage();
 });
