@@ -1,6 +1,7 @@
 //JS Imports
 import { updateBookingsMonth } from "@/js/utils/dateHelpers.js";
 import { initDynamicImageCollage } from "@/js/components/imageCollage.js";
+import { initLogoScroll } from "@/js/components/logoScroll.js";
 
 // CSS Imports
 import "@/styles/components.css";
@@ -38,4 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Image Collage
   initDynamicImageCollage();
+
+  //Logo Scroller
+  initLogoScroll();
 });

@@ -13,7 +13,7 @@
   --color-gray-500: #dfdbde;
   --color-gray-700: #b0a6ad;
   --color-gray-800: #6b6168;
-  --color-black: #201a2b;
+  --color-black: hsl(261, 25%, 14%);
 
   /* Black Transparencies */
   --shade-light: #201a2b13;

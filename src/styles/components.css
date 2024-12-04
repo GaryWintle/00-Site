@@ -20,6 +20,15 @@
   box-shadow: 2px 2px var(--color-purple-mid),
     inset 2px 2px 0 rgba(255, 255, 255, 0.15);
   cursor: pointer;
+  transition: all 0.15s ease-out;
+}
+
+.btn:hover {
+  background-color: var(--color-teal-dark);
+}
+
+.hero__cta:hover {
+  background-color: var(--color-teal-dark);
 }
 
 .nav__cta {
@@ -33,6 +42,7 @@
   font-weight: 700;
   letter-spacing: -0.05rem;
   padding: var(--spacing-3) var(--spacing-5);
+  position: relative;
 }
 
 .booking-icon {
@@ -44,19 +54,37 @@
   position: absolute;
   bottom: 0;
   right: 12px;
+  z-index: 1;
 }
 
 .image-collage {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1.2rem;
   padding: 1rem;
 }
 
 .collage-image {
   width: 100%;
-  height: 200px;
+  height: 20rem;
   object-fit: cover;
   border-radius: var(--border-radius);
-  border: 1px solid var(--color-purple-dark);
+  border: 1px solid var(--color-purple-darkest);
+}
+
+.logo-scroll-container {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  transition: transform 0.1s linear;
+  width: max-content;
+  margin: 0 auto;
+  opacity: 0.5;
+  margin-bottom: var(--spacing-7);
+}
+
+.logo {
+  height: 4rem;
+  width: auto;
 }

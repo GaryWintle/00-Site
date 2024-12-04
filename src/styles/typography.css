@@ -8,14 +8,16 @@ h3 {
   font-family: var(--font-heading);
 }
 
-a {
-  text-decoration: none;
-}
-
-.nav-text {
+.nav__links a {
   color: var(--color-white);
   font-size: var(--font-size-base);
   font-weight: 500;
+  transition: all 0.15s ease-out;
+  text-decoration: none;
+}
+
+.nav__links a:hover {
+  color: var(--color-teal-light);
 }
 
 h1 {

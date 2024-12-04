@@ -54,6 +54,10 @@ body {
   align-items: baseline;
 }
 
+li {
+  list-style-type: none;
+}
+
 /* HERO */
 
 .hero-container {
@@ -63,7 +67,6 @@ body {
 .hero-bottom {
   position: absolute;
   bottom: 0;
-  z-index: -1;
   width: 100%;
   height: auto;
 }
@@ -76,13 +79,12 @@ body {
 }
 
 .hero-image {
-  height: 105rem;
+  height: auto;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
   background-attachment: fixed;
-  z-index: -2;
 
   &::before {
     content: "";
@@ -97,7 +99,7 @@ body {
       var(--color-purple-dark) 110%
     );
     opacity: 0.85;
-    z-index: -1;
+    /* z-index: -1; */
   }
 }
 
@@ -110,10 +112,27 @@ body {
 
 .sub-hero-container {
   margin: var(--spacing-8) 0;
+  text-align: center;
+  width: 100%;
 }
 
 .sub-hero {
+  overflow: hidden;
   max-width: var(--desktop-width);
   margin: 0 auto;
   padding: 0 var(--spacing-6);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black var(--spacing-6),
+    black calc(100% - var(--spacing-6)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black var(--spacing-6),
+    black calc(100% - var(--spacing-6)),
+    transparent 100%
+  );
 }

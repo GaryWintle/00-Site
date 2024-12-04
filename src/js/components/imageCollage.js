@@ -16,7 +16,7 @@ export function initDynamicImageCollage() {
   let currentImages = [];
 
   // Initialize collage with unique images
-  const initialImages = getUniqueImages(6);
+  const initialImages = getUniqueImages(8);
   currentImages = [...initialImages];
 
   // Render initial images
