@@ -73,3 +73,8 @@ html {
   scroll-behavior: smooth;
   overflow-x: clip;
 }
+
+::selection {
+  background: var(--color-purple-mid);
+  color: var(--color-white);
+}

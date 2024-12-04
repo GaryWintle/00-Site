@@ -16,13 +16,15 @@ h3 {
   text-decoration: none;
 }
 
-.nav__links a:hover {
+.nav__links a:hover,
+a:focus {
   color: var(--color-teal-light);
 }
 
 h1 {
   color: var(--color-white);
-  font-size: var(--font-size-header);
+  font-size: clamp(10rem, 15vw + 1rem, 20rem);
+  /* font-size: var(--font-size-header); */
   line-height: 85%;
   text-transform: uppercase;
   font-optical-sizing: auto;
@@ -31,6 +33,8 @@ h1 {
   text-align: center;
   text-shadow: 4px 4px 0 var(--color-black), 6px 6px 0 var(--color-purple-mid),
     0 21px 21px #201a2bbe;
+  /* background-color: red; */
+  width: fit-content;
 }
 
 .--green-text {
@@ -53,4 +57,16 @@ h1 {
   font-size: var(--font-size-base);
   font-weight: 500;
   font-style: italic;
+}
+
+/* testimonials */
+
+.test-name {
+  color: var(--color-white);
+}
+.test-company {
+  color: var(--color-teal-light);
+}
+.test-quote {
+  color: var(--color-white);
 }

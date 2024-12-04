@@ -82,9 +82,36 @@
   margin: 0 auto;
   opacity: 0.5;
   margin-bottom: var(--spacing-7);
+  overflow-x: hidden;
 }
 
 .logo {
   height: 4rem;
   width: auto;
+}
+
+/* testimonials */
+
+.testimonial {
+  background: linear-gradient(
+    340deg,
+    var(--color-purple-dark) -80%,
+    var(--color-black) 70%
+  );
+  border-radius: var(--border-radius);
+  width: 60rem;
+  padding: var(--spacing-5) var(--spacing-6);
+
+  border-top: 0.1rem solid var(--color-purple-dark);
+}
+
+.test-heading {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.test-pic {
+  width: 6.4rem;
+  border-radius: 20rem;
+  border: 0.2rem solid var(--color-purple-dark);
 }

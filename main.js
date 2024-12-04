@@ -16,6 +16,12 @@ import rlhero from "@/images/homepage/rl-hero.webp";
 import beaverbasic from "@/images/homepage/beaver-cartoon.svg";
 import herobottom from "@/images/homepage/hero-bottom.svg";
 
+//Testimonials
+import danatest from "@/images/homepage/testimonials/danalarsen.jpg";
+import jodietest from "@/images/homepage/testimonials/jodie.jpg";
+import britneytest from "@/images/homepage/testimonials/britney.jpg";
+import corytest from "@/images/homepage/testimonials/cory.jpg";
+
 // Direct DOM manipulation
 document.addEventListener("DOMContentLoaded", () => {
   // Rebel Leaf Logo
@@ -32,7 +38,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Hero Bottom
   const heroBottom = document.querySelector(".hero-bottom");
-  if (heroBottom) heroBottom.src = herobottom;
+  heroBottom.src = herobottom;
+
+  //Testimonials
+  const danaTest = document.querySelector("#dana-test");
+  if (danaTest) danaTest.src = danatest;
+
+  const jodieTest = document.querySelector(".jodie-test");
+  if (jodieTest) jodieTest.src = jodietest;
+
+  const britneyTest = document.querySelector(".britney-test");
+  if (britneyTest) britneyTest.src = britneytest;
+
+  const coryTest = document.querySelector(".cory-test");
+  if (coryTest) coryTest.src = corytest;
 
   //Booking Date
   updateBookingsMonth();
