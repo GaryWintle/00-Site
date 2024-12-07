@@ -99,6 +99,7 @@ li {
       var(--color-purple-dark) 110%
     );
     opacity: 0.85;
+
     /* z-index: -1; */
   }
 }

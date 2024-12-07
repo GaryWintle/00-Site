@@ -3,6 +3,9 @@ import { updateBookingsMonth } from "@/js/utils/dateHelpers.js";
 import { initDynamicImageCollage } from "@/js/components/imageCollage.js";
 import { initLogoScroll } from "@/js/components/logoScroll.js";
 
+// GSAP
+import { gsapAnimations } from "@/js/utils/gsap.js";
+
 // CSS Imports
 import "@/styles/components.css";
 import "@/styles/layout.css";
@@ -61,4 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //Logo Scroller
   initLogoScroll();
+
+  //GSAP
+  gsapAnimations();
 });

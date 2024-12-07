@@ -63,10 +63,15 @@ h1 {
 
 .test-name {
   color: var(--color-white);
+  font-size: var(--font-size-lg);
 }
 .test-company {
   color: var(--color-teal-light);
+  font-size: var(--font-size-base);
 }
 .test-quote {
   color: var(--color-white);
+  font-size: var(--font-size-lg);
+  text-align: left;
+  line-height: 1.4;
 }
