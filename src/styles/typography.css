@@ -33,13 +33,26 @@ h1 {
   text-align: center;
   text-shadow: 4px 4px 0 var(--color-black), 6px 6px 0 var(--color-purple-mid),
     0 21px 21px #201a2bbe;
-  /* background-color: red; */
-  width: fit-content;
+  transition: all 0.5s linear;
+}
+
+.--white-text {
+  color: var(--color-white);
 }
 
 .--green-text {
   color: var(--color-teal-light);
 }
+
+/* @keyframes embiggen {
+  from {
+    transform: opacity(0);
+  }
+
+  to {
+    transform: opacity(1);
+  }
+} */
 
 .sub-hero-text {
   color: var(--color-white);

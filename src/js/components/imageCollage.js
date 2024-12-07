@@ -29,7 +29,7 @@ export function initDynamicImageCollage() {
     .join("");
 
   // Set up image-changing interval
-  setInterval(changeRandomImage, Math.floor(Math.random() * 4000) + 500);
+  setInterval(changeRandomImage, Math.floor(Math.random() * 4000) + 30);
 
   // Get a specified number of unique images
   function getUniqueImages(count, excludeImages = []) {

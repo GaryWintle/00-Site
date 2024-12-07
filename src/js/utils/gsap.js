@@ -2,22 +2,37 @@ import { gsap, ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
 export function gsapAnimations() {
+  // testimonials
   gsap.from("#test-anim", {
     y: 30,
     opacity: 0,
-    duration: 1,
+    duration: 0.5,
     scrollTrigger: {
       trigger: "#test-anim",
-      end: "bottom center",
-      markers: true,
+      //   scrub: true,
+      start: "top 90%",
+      end: "bottom 10%",
+      toggleActions: "restart none none reverse",
+      // onEnter onLeave onEnterBack onLeaveBack
+      //   markers: true,
     },
   });
-  //   gsap.to(".--green-text", {
-  //     opacity: 0,
-  //     duration: 1,
+
+  ScrollTrigger.create({
+    trigger: "h1",
+    start: "top 10%",
+    markers: true,
+    toggleClass: { targets: "h1 > span", className: "--green-text" },
+    toggleActions: "restart none none reverse",
+    scrub: 4,
+  });
+  //   gsap.to("span", {
+  //     duration: 11,
   //     scrollTrigger: {
-  //       trigger: ".--green-text",
-  //       start: 20,
+  //       trigger: "h1",
+  //       start: "top -40px",
+  //       markers: true,
+  //       toggleClass: "--green-text",
   //     },
   //   });
 }

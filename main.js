@@ -67,4 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //GSAP
   gsapAnimations();
+
+  console.log(
+    "Initial body transform:",
+    window.getComputedStyle(document.body).transform
+  );
 });
