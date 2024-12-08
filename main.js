@@ -25,6 +25,11 @@ import jodietest from "@/images/homepage/testimonials/jodie.jpg";
 import britneytest from "@/images/homepage/testimonials/britney.jpg";
 import corytest from "@/images/homepage/testimonials/cory.jpg";
 
+document.documentElement.classList.add("no-transition");
+window.addEventListener("load", () => {
+  document.documentElement.classList.remove("no-transition");
+});
+
 // Direct DOM manipulation
 document.addEventListener("DOMContentLoaded", () => {
   // Rebel Leaf Logo

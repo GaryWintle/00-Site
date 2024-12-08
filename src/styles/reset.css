@@ -78,3 +78,7 @@ html {
   background: var(--color-purple-mid);
   color: var(--color-white);
 }
+
+.no-transition * {
+  transition: none !important;
+}
